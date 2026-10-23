@@ -4,15 +4,16 @@ An interactive study site for PHY 103 (calculus-based mechanics and waves), part
 
 > **Unofficial study aid.** Not affiliated with, reviewed by, or endorsed by Princeton University or its Physics Department. **Use it to study, not on graded work**, and follow the course's collaboration rules.
 
-## Don't edit `index.html` here
+## Editing
 
-This site is built from the same source as [Mechanics Lab](https://github.com/jiacode2030/physics-mechanics) (the AP Physics C version). Edit `src/site.html` in that repo, then run:
+`index.html` is the whole site (one file, no build step). Edit it directly, then run the checks:
 
 ```
-python3 build.py --all ../phy103-lab
+python3 tools/check.py
+NODE_PATH=$(npm root -g) node tests/check.js
 ```
 
-That writes both sites. Commit and push both repos.
+See `CLAUDE.md` for the rules.
 
 ## Privacy
 
