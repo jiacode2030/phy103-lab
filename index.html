@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=STIX+Two+Text:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=STIX+Two+Text:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: a lab-notebook app. Module rail on the left (top strip on phones), one module per view.
    Position, velocity and acceleration keep one color each on every graph, arrow and equation. */
@@ -793,8 +793,69 @@ figcaption,.strobe figcaption,.fbdfig figcaption,.v3cap{font-family:var(--cap-fo
 .countdown .lbl{display:flex;flex-direction:column;gap:2px;font-size:13.5px;color:var(--ink)}
 .countdown .lbl small{font:500 11.5px var(--f-mono);color:var(--muted)}
 #rail-count:empty{display:none}
+.credit-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 6px;font-size:13.5px;color:var(--ink)}
 #rail-count{color:var(--accent)}
 @media (prefers-reduced-motion: reduce){*,::before,::after{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}}
+
+/* ---------------- PHY 103: the Multivariable Calculus Lab look ----------------
+   Same tokens as MAT 201: light only, IBM Plex Sans / STIX Two Text / IBM Plex Mono, one blue accent,
+   white cards on a plain gray page. Plot colors (x blue, v green, a red) keep their meaning; nothing decorative
+   moves. The simulations still run. */
+:root{
+  color-scheme:light;
+  --bg:#F4F6F8; --surface:#FFFFFF; --sunk:#F6F8FA; --ink:#18202B; --muted:#5A6676; --line:#DEE3EA; --grid:transparent; --accent:#2457A6;
+  --cx:#2457A6; --cv:#2E8B57; --ca:#C2453A; --hot:#D9822B; --good:#2E8B57; --bad:#C2453A;
+  --f-display:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; --f-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --f-math:"STIX Two Text","Cambria Math","Times New Roman",serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --shadow-1:none; --shadow-2:none;
+  --h-font:var(--f-body); --h-w:600; --h-track:-.01em; --brand-w:700;
+  --radius:10px; --btn-bg:var(--accent); --btn-fg:#FFFFFF; --btn-font:var(--f-body); --btn-case:none; --btn-track:0; --btn-size:14px;
+  --nav-bg:#E6EEFA; --nav-fg:var(--accent); --lab-c:var(--muted); --ro-c:var(--ink);
+  --cap-font:var(--f-body); --cap-style:normal; --cap-size:13px; --page-grid:none;
+  --fig-tag:none; --fig-tag-c:var(--muted); --hl-style:normal; --h2-rule:1px solid var(--line); --h2-bar:none; --lift:0px;
+}
+html{background:var(--bg)}
+body{font-size:15.5px;line-height:1.55}
+*,::before,::after{animation:none!important}
+.nav .ind,.steps .ind,.nav a,.rmeter i,.mod,.modnav a,.btn,.searchbtn,.morelabs,details summary::before{transition:none!important}
+.mod:hover,.modnav a:hover,.btn:active,.searchbtn:active{transform:none!important}
+h1{font-size:clamp(28px,3.6vw,38px);line-height:1.15;font-weight:600}
+.view:not(#v-overview) .head h1{font-size:clamp(26px,3.2vw,34px)}
+h2{font-size:clamp(20px,2.4vw,24px);font-weight:600}
+.mod h3,.modgroup .gtitle,.start h3,.modnav a strong{font-weight:600}
+.modgroup .gtitle{font-size:19px}.mod h3{font-size:16px}
+.hero h1 .hl{color:var(--ink);font-style:normal}
+.brand{font-size:18px}
+/* labels: small caps in the body font, like the MAT 201 boxes */
+.eyebrow,.tag,.nav .grp,.labbar .title,.intuit .k,.note b,.try h3,.oops h3,.example h3,.sorter h3,.assume h3,.assume dt,.coach b,.ttip h3,
+.fs h3,.fsp h3,.modnav a span,.mod .n,.mod .prog,.railprog,.steps a .sn,th,.readout span,.eqgrid .eqn small,.mapnote,.rp .ri .meta{
+  font-family:var(--f-body)!important;font-weight:600;letter-spacing:.08em}
+.mapnote,.railprog,.mod .prog,.mod .n{font-weight:400;letter-spacing:0;font-size:12px}
+.eqgrid .eqn small,.readout span,.assume dt{letter-spacing:.04em}
+select,input[type=text]{font-family:var(--f-body)}
+.credit-row{font-size:13.5px}
+/* one neutral card style; color only where it carries meaning */
+.lab,.example,.sorter,.frq,.strobe,.quiz,.prob,.start>div,.modnav a,.tablewrap,.try,.assume,.ttip,.v3{background:var(--surface);border:1px solid var(--line);box-shadow:none}
+.lab::before,.strobe::before,.mod::before,.modgroup .gtitle::before{display:none}
+.start>div:nth-child(n){border-top:1px solid var(--line)}
+.modgroup{--c:var(--line)}
+.mod{border-top:0}
+.mod:hover{border-color:var(--accent)}
+.intuit{background:#E6EEFA;border-left:3px solid var(--accent)}
+.intuit .k{color:var(--accent)}
+.oops{background:#FCEFE0;border-left-color:var(--hot)}
+.oops h3{color:#9A5512}
+.assume.upgrade,.assume.fornow{background:var(--sunk);border:1px solid var(--line)}
+.assume.upgrade h3,.assume.fornow h3,.example h3,.sorter h3,.try h3{color:var(--muted)}
+.coach{background:var(--sunk);border-color:var(--line)}
+.coach b{color:var(--accent)}
+.eqn{background:var(--sunk);border:1px solid var(--line)}
+.tag,.tag.pu,.tag.calc,.tag.ap{color:var(--muted);border-color:var(--line);background:var(--surface)}
+.rmeter i{background:var(--accent)}
+.mp-hero{background:var(--sunk)}
+.wrap>.head h2{border-top:0;padding-top:0}
+.btn.primary:hover{box-shadow:none;filter:brightness(1.08)}
+.fx,.bubble,.cele{display:none!important}
 </style>
 
 
@@ -840,7 +901,7 @@ figcaption,.strobe figcaption,.fbdfig figcaption,.v3cap{font-family:var(--cap-fo
     <div class="railprog"><span id="rail-count"></span><span id="rail-prog">0 modules done</span><div class="rmeter"><i id="rail-meter"></i></div></div>
     <div class="railtools">
     <button type="button" class="searchbtn" id="cmd-btn" aria-label="Search modules"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span class="tl">Search modules</span><kbd>/</kbd></button>
-    <button type="button" class="themebtn" id="theme-btn" data-mode="auto"><svg class="ti-auto" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg><svg class="ti-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ti-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="tl">Theme: auto</span></button>
+    
     <a class="morelabs" href="/princeton-labs/" aria-label="More Princeton labs"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="tl">More labs</span></a>
     </div>
     <nav class="nav" id="nav" aria-label="Modules"></nav>
@@ -850,7 +911,7 @@ figcaption,.strobe figcaption,.fbdfig figcaption,.v3cap{font-family:var(--cap-fo
       <div class="lv"><b>v</b> velocity</div>
       <div class="la"><b>a</b> acceleration</div>
     </div>
-    <div class="foot">For PHY 103: calculus-based mechanics and waves. <span class="m"><i>g</i> = 9.8 m/s²</span> throughout.<span class="mapnote">Weeks follow the PHY 103 schedule.</span><span class="mapnote">Unofficial study aid. Not affiliated with Princeton University.</span><span class="mapnote">Use it to study, not on graded work.</span><span class="mapnote">Last updated October 23, 2026</span><span class="mapnote">Privacy: your progress stays in your browser. Nothing is counted or tracked.</span><span class="mapnote"><a href="/princeton-labs/privacy.html">Privacy policy</a> · <a href="/princeton-labs/terms.html">Terms of use</a></span><span class="mapnote">© 2026 JL. All rights reserved.</span></div>
+    <div class="foot">For PHY 103: calculus-based mechanics and waves. <span class="m"><i>g</i> = 9.8 m/s²</span> throughout.<span class="mapnote">Weeks follow the PHY 103 schedule.</span><span class="mapnote">Unofficial study aid. Not affiliated with Princeton University.</span><span class="mapnote">Use it to study, not on graded work.</span><span class="mapnote">Last updated October 23, 2026</span><span class="mapnote">Privacy: your progress stays in your browser. Nothing is counted or tracked.</span><span class="mapnote"><a href="/princeton-labs/privacy.html">Privacy policy</a> · <a href="/princeton-labs/terms.html">Terms of use</a></span><span class="mapnote credit">JL · Princeton Class of 2030</span><span class="mapnote">© 2026 JL. All rights reserved.</span></div>
   </aside>
 
   <main>
@@ -865,7 +926,7 @@ figcaption,.strobe figcaption,.fbdfig figcaption,.v3cap{font-family:var(--cap-fo
           <div class="row"><a class="btn primary" href="#graphs" style="text-decoration:none">Start with motion graphs</a><a class="btn" href="#practice" style="text-decoration:none">Go to the practice set</a></div>
           
           <p class="heronote">The modules follow the week-by-week order of PHY 103 at Princeton University, so you can study along with the course. This is an independent, unofficial study aid. It is not affiliated with, reviewed by, or endorsed by Princeton University or its Physics Department. Use it to study, not on graded work, and follow the course's collaboration rules.</p>
-          <p class="ov-report"><span class="mapnote" style="margin:0 0 4px">© 2026 JL. All rights reserved. · <a href="/princeton-labs/privacy.html">Privacy policy</a> · <a href="/princeton-labs/terms.html">Terms of use</a></span><span class="mapnote" style="margin:0 0 4px">Last updated October 23, 2026</span>Spotted a mistake or something confusing? <button type="button" class="btn link rp-link" data-report="overview" style="padding:0">Report an issue</button></p>
+          <p class="ov-report"><span class="credit-row">JL · Princeton Class of 2030</span><span class="mapnote" style="margin:0 0 4px">© 2026 JL. All rights reserved. · <a href="/princeton-labs/privacy.html">Privacy policy</a> · <a href="/princeton-labs/terms.html">Terms of use</a></span><span class="mapnote" style="margin:0 0 4px">Last updated October 23, 2026</span>Spotted a mistake or something confusing? <button type="button" class="btn link rp-link" data-report="overview" style="padding:0">Report an issue</button></p>
         </div>
         <figure class="strobe" style="margin:0">
           <canvas id="hero-canvas" aria-label="Strobe image of a dropped ball and a ball launched sideways, one flash every 0.1 seconds"></canvas>
@@ -2651,7 +2712,7 @@ figcaption,.strobe figcaption,.fbdfig figcaption,.v3cap{font-family:var(--cap-fo
 'use strict';
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
-const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches,CALM=true;
 const G=9.8;
 let T={};
 function readTokens(){const cs=getComputedStyle(document.documentElement);const g=n=>cs.getPropertyValue(n).trim();
@@ -2713,12 +2774,12 @@ const FX=(()=>{let cv=null,ctx=null,parts=[],raf=0,last=0;const g=1500;
       ctx.save();ctx.globalAlpha=a;ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.col;
       if(p.paper){ctx.scale(1,Math.cos(p.life*p.flip));ctx.fillRect(-p.s,-p.s*.6,p.s*2,p.s*1.2);}else{ctx.beginPath();ctx.arc(0,0,p.s,0,7);ctx.fill();}ctx.restore();return true;});
     if(parts.length)raf=requestAnimationFrame(step);else{raf=0;last=0;}}
-  return {spray(x,y,n,o={}){if(REDUCE)return;if(!cv){cv=document.createElement('canvas');cv.className='fx';cv.setAttribute('aria-hidden','true');document.body.appendChild(cv);ctx=cv.getContext('2d');addEventListener('resize',fit);}fit();
+  return {spray(x,y,n,o={}){if(CALM)return;if(!cv){cv=document.createElement('canvas');cv.className='fx';cv.setAttribute('aria-hidden','true');document.body.appendChild(cv);ctx=cv.getContext('2d');addEventListener('resize',fit);}fit();
     const cols=o.cols||[T.cx,T.cv,T.ca,T.hot];for(let i=0;i<n;i++){const ang=(o.dir??-Math.PI/2)+(Math.random()-.5)*(o.spread??Math.PI*2),sp=(o.speed||300)*(.55+Math.random()*.6);
       parts.push({x,y,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,rot:Math.random()*6,w:(Math.random()-.5)*14,flip:6+Math.random()*10,s:o.paper?3+Math.random()*3:2+Math.random()*2.2,
         col:cols[i%cols.length],paper:!!o.paper,drag:o.paper?1.6:2.2,gk:o.paper?1:.6,life:0,max:o.life||(o.paper?2.4:.9)});}
     if(!raf)raf=requestAnimationFrame(step);}};})();
-function burst(el,n=14){if(REDUCE||!el)return;const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;FX.spray(clamp(r.left+r.width-28,8,innerWidth-8),r.top+r.height/2,n,{speed:320});}
+function burst(el,n=14){if(CALM||!el)return;const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;FX.spray(clamp(r.left+r.width-28,8,innerWidth-8),r.top+r.height/2,n,{speed:320});}
 (function springs(){if(!(window.CSS&&CSS.supports&&CSS.supports('transition-timing-function','linear(0, 1)')))return;
   const mk=z=>{const w0=Math.log(400)/z,wd=w0*Math.sqrt(1-z*z),pts=[];for(let i=0;i<=40;i++){const t=i/40;pts.push(+(1-Math.exp(-z*w0*t)*(Math.cos(wd*t)+z*w0/wd*Math.sin(wd*t))).toFixed(4));}return `linear(${pts.join(',')})`;};
   const st=document.documentElement.style;st.setProperty('--ease-spring',mk(.42));st.setProperty('--ease-out',mk(.82));})();
@@ -4488,13 +4549,8 @@ let rz;new ResizeObserver(()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame
 function onTheme(){readTokens();redraw();}
 const mq=matchMedia('(prefers-color-scheme: dark)');if(mq.addEventListener)mq.addEventListener('change',onTheme);
 new MutationObserver(onTheme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-/* ---------------- Theme switch: auto (follows the device), light, dark ---------------- */
-(function theme(){const b=$('#theme-btn'),root=document.documentElement,NAMES={auto:'auto',light:'light',dark:'dark'};
-  function show(m){b.dataset.mode=m;$('.tl',b).textContent='Theme: '+NAMES[m];b.setAttribute('aria-label',`Color theme: ${NAMES[m]}. Click to change.`);}
-  function apply(m){if(m==='auto')root.removeAttribute('data-theme');else root.setAttribute('data-theme',m);show(m);}
-  const saved=store('phy-theme');if(saved&&NAMES[saved])apply(saved);else show('auto');
-  let tm;b.addEventListener('click',()=>{const m={auto:'light',light:'dark',dark:'auto'}[b.dataset.mode]||'auto';
-    if(!REDUCE){root.classList.add('theming');clearTimeout(tm);tm=setTimeout(()=>root.classList.remove('theming'),400);}apply(m);store('phy-theme',m);});})();
+/* light theme only, like Multivariable Calculus Lab */
+document.documentElement.setAttribute('data-theme','light');
 /* ---------------- Feedback motion: new text slides in; right answers burst ---------------- */
 new MutationObserver(recs=>{const seen=new Set();recs.forEach(r=>{const el=r.target;if(!el.classList||seen.has(el))return;
   if(el.classList.contains('fb')||(el.parentElement&&el.parentElement.classList.contains('coach'))){seen.add(el);el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap');}});})
@@ -4503,14 +4559,14 @@ document.addEventListener('click',e=>{const b=e.target.closest('.quiz .opts butt
 document.addEventListener('submit',e=>{const card=e.target.closest('.prob');if(!card)return;const btn=$('button[type=submit]',card)||card;if($('.fb.ok',card)){burst(btn);bubble(btn,'Correct!');}});
 /* ---------------- Popups and expanding panels ---------------- */
 const ICON={x:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'};
-function bubble(el,text,bad){if(REDUCE)return;const r=el.getBoundingClientRect(),b=document.createElement('span');b.className='bubble'+(bad?' no':'');b.textContent=text;b.setAttribute('aria-hidden','true');
+function bubble(el,text,bad){if(CALM)return;const r=el.getBoundingClientRect(),b=document.createElement('span');b.className='bubble'+(bad?' no':'');b.textContent=text;b.setAttribute('aria-hidden','true');
   b.style.left=clamp(r.left+r.width-60,50,innerWidth-50)+'px';b.style.top=(r.top-30)+'px';document.body.appendChild(b);setTimeout(()=>b.remove(),1200);}
 function confetti(x,y,n=40){FX.spray(x,y,n,{paper:true,speed:720,spread:1.5});}
 /* open/close a dialog with the shared pop animation */
 function popOpen(d){d.classList.remove('closing');if(d.showModal){if(!d.open)d.showModal();}else d.setAttribute('open','');}
 function popClose(d,then){const end=()=>{d.classList.remove('closing','flip');if(d.close)d.close();else d.removeAttribute('open');then&&then();};if(REDUCE||!d.open){end();return;}d.classList.add('closing');setTimeout(end,190);}
 /* FLIP: animate an element from a rectangle it used to occupy to where it is now */
-function flipFrom(el,from,ms=480){if(REDUCE||!el.animate)return null;const to=el.getBoundingClientRect();if(!to.width||!to.height)return null;
+function flipFrom(el,from,ms=480){if(CALM||!el.animate)return null;const to=el.getBoundingClientRect();if(!to.width||!to.height)return null;
   return el.animate([{transformOrigin:'0 0',transform:`translate(${from.left-to.left}px,${from.top-to.top}px) scale(${from.width/to.width},${from.height/to.height})`},{transformOrigin:'0 0',transform:'none'}],{duration:ms,easing:'cubic-bezier(.2,.9,.25,1.04)'});}
 
 /* Search: jump to any module (button in the rail, or press / anywhere) */
@@ -4534,7 +4590,7 @@ function flipFrom(el,from,ms=480){if(REDUCE||!el.animate)return null;const to=el
 
 /* Module preview: clicking a module card expands it into a preview */
 (function preview(){const d=$('#mprev'),body=$('#mprev-body');let card=null;
-  function countUp(el,to){if(REDUCE){el.textContent=to;return;}const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/600);el.textContent=Math.round(to*(1-(1-k)**3));if(k<1)requestAnimationFrame(f);};requestAnimationFrame(f);}
+  function countUp(el,to){if(CALM){el.textContent=to;return;}const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/600);el.textContent=Math.round(to*(1-(1-k)**3));if(k<1)requestAnimationFrame(f);};requestAnimationFrame(f);}
   function open(c){const id=(c.getAttribute('href')||'').slice(1);if(!MODS[id])return;card=c;const m=MODS[id],g=GROUPS.find(g=>g.ids.includes(id)),solved=store('phy-solved')||{},probs=PROBS.filter(p=>p.topic===id),
       ns=probs.filter(p=>solved[p.id]).length,dn=!!(store('phy-done')||{})[id],secs=$$('.steps a',$('#v-'+id)).map(a=>a.textContent.replace(/^\d+/,''));
     const i=GROUPS.flatMap(g=>g.ids).indexOf(id),dots=[0,1,2,3,4,5].map(k=>`<circle cx="${18+k*22}" cy="${14+2.4*k*k}" r="${k===5?7:6}" fill="var(--${k===5?'hot':'cx'})" opacity="${k===5?1:.25+k*.13}" style="animation-delay:${200+k*70}ms"/>`).join('');
@@ -4569,14 +4625,14 @@ function flipFrom(el,from,ms=480){if(REDUCE||!el.animate)return null;const to=el
   window.addEventListener('hashchange',()=>{if(openLab)collapse();});})();
 
 /* Answers and scoring guides slide open and closed */
-(function expandDetails(){document.addEventListener('click',e=>{const s=e.target.closest('summary');if(!s||REDUCE)return;const d=s.parentElement;if(!d||d.tagName!=='DETAILS'||!d.animate)return;e.preventDefault();
+(function expandDetails(){document.addEventListener('click',e=>{const s=e.target.closest('summary');if(!s||CALM)return;const d=s.parentElement;if(!d||d.tagName!=='DETAILS'||!d.animate)return;e.preventDefault();
   if(d._an)d._an.cancel();const start=d.getBoundingClientRect().height;d.style.overflow='hidden';
   if(!d.open){d.open=true;const end=d.getBoundingClientRect().height;d._an=d.animate([{height:start+'px'},{height:end+'px'}],{duration:420,easing:'cubic-bezier(.2,.9,.25,1.04)'});}
   else{d.open=false;const end=d.getBoundingClientRect().height;d.open=true;d._an=d.animate([{height:start+'px'},{height:end+'px'}],{duration:240,easing:'cubic-bezier(.4,0,1,1)'});d._an.onfinish=()=>{d.open=false;};}
   d._an.addEventListener('finish',()=>{d.style.overflow='';d._an=null;});});})();
 
 /* Sections that start below the fold rise in as they scroll into view */
-(function reveal(){if(REDUCE||!('IntersectionObserver' in window))return;
+(function reveal(){if(CALM||!('IntersectionObserver' in window))return;
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;io.unobserve(el);el.classList.add('in');setTimeout(()=>el.classList.remove('rv','in'),800);}),{rootMargin:'0px 0px -6% 0px'});
   armReveal=()=>{$$('.rv').forEach(el=>el.classList.remove('rv','in'));io.disconnect();const sec=$('.view:not([hidden])');if(!sec)return;
     $$('.wrap>*:not(.head):not(.steps):not(.modgroups), .modgroups>.modgroup',sec).forEach(el=>{if(el.getBoundingClientRect().top>innerHeight*.92&&!el.classList.contains('big')){el.classList.add('rv');io.observe(el);}});};
