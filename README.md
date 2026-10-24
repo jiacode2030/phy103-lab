@@ -23,4 +23,4 @@ Progress is saved only in your browser (keys start with `phy-`). Nothing is coun
 
 The **Report an issue** link opens a pre-filled issue in this repo. Issues are public, so don't include personal information.
 
-© 2026 JL. All rights reserved.
+© 2026 Jiarui Li. All rights reserved.
